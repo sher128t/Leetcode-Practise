@@ -1,0 +1,36 @@
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        answer = 1
+        counter = 0
+        inital_divisor = divisor
+        make_answer_negetive = False
+        
+        if abs(dividend) < abs(divisor):
+            return 0
+        if dividend == divisor:
+            return 1
+        if str(dividend)[0] == "-":
+            counter += 1
+            dividend = abs(dividend)
+        if str(divisor)[0] == "-":
+            counter += 1
+            divisor = abs(divisor)
+        if counter == 1:
+            make_answer_negetive = True
+        if divisor == 1:
+            if dividend > 2147483647:
+                return 2147483647
+            if dividend < -2147483648:
+                return -2147483648
+            if make_answer_negetive == True:
+                return -(dividend)
+            else:
+                return dividend
+        while dividend > divisor:
+            divisor += abs(inital_divisor)
+            if divisor < dividend:
+                answer += 1
+        
+        if make_answer_negetive == True:
+            answer = -(answer)
+        return answer
