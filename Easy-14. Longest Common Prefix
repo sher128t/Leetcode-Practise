@@ -1,0 +1,22 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        answer = ""
+        if strs[0] == "":
+            return answer
+        strs.sort()
+        y = 0
+        counter = len(strs)
+        temp_list = sorted(strs, key=len)
+        shortest_word = temp_list[0]
+        for i in shortest_word:
+            if counter == len(strs):
+                counter = 0
+                for j in strs:
+                    if i == (j[y]):
+                        counter += 1
+                if counter == len(strs):
+                    answer += shortest_word[y]
+                else:
+                    return answer
+                y += 1
+        return answer
