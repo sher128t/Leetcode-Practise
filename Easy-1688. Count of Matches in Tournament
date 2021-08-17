@@ -1,0 +1,8 @@
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        answer = 0
+        while n != 1:
+            matches_played = n//2
+            answer += matches_played
+            n -= matches_played
+        return answer
